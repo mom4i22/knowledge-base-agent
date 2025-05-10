@@ -1,8 +1,6 @@
 from heapq import heappush, heappop
 from typing import Tuple, List, Dict, Optional
 
-# --- 2.1. Basic KB structures and unification -----------------
-
 class Predicate:
     def __init__(self, name: str, args: Tuple):
         self.name = name
@@ -40,7 +38,6 @@ def build_maze(obstacles: List[Tuple[int,int]],
     kb.add(Predicate("Start", (0,0)))
     kb.add(Predicate("Goal", (4,5)))
 
-    # Adjacency and Move facts
     for r in range(rows):
         for c in range(cols):
             if (r,c) in obstacles:
@@ -69,7 +66,6 @@ def astar_search(kb: KnowledgeBase,
             continue
         closed.add(current)
 
-        # Expand neighbours
         for move in kb.fetch("Move"):
             if (move.args[0], move.args[1]) == current:
                 neigh = (move.args[2], move.args[3])
