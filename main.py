@@ -27,8 +27,7 @@ def unify(a, b, theta=None):
     # For this maze problem we only need ground unification
     return None
 
-def build_maze(obstacles: List[Tuple[int,int]],
-                  rows=5, cols=6) -> KnowledgeBase:
+def build_maze(obstacles: List[Tuple[int,int]], rows=5, cols=6) -> KnowledgeBase:
     kb = KnowledgeBase()
     for r in range(rows):
         for c in range(cols):
@@ -51,9 +50,7 @@ def build_maze(obstacles: List[Tuple[int,int]],
 def manhattan(a: Tuple[int,int], b: Tuple[int,int]) -> int:
     return abs(a[0]-b[0]) + abs(a[1]-b[1])
 
-def astar_search(kb: KnowledgeBase,
-                 start=(0,0), goal=(4,5)
-                ) -> Optional[List[Tuple[int,int]]]:
+def astar_search(kb: KnowledgeBase, start=(0,0), goal=(4,5)) -> Optional[List[Tuple[int,int]]]:
     open_set = []
     heappush(open_set, (manhattan(start, goal), 0, start, [start]))
     closed = set()
